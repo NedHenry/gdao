@@ -43,7 +43,7 @@ function exhibit_builder_is_current_exhibit($exhibit)
  * @return string
  **/
 function exhibit_builder_link_to_exhibit($exhibit = null, $text = null, $props = array(), $exhibitSection = null, $exhibitPage = null)
-{   
+{
     if (!$exhibit) {
         $exhibit = exhibit_builder_get_current_exhibit();
     }
@@ -57,7 +57,7 @@ function exhibit_builder_link_to_exhibit($exhibit = null, $text = null, $props =
  *
  * @param Exhibit $exhibit|null If null, it uses the current exhibit.
  * @param ExhibitSection|null $exhibitSection
- * @param ExhibitPage|null $exhibitPage 
+ * @param ExhibitPage|null $exhibitPage
  * @internal This relates to: ExhibitsController::showAction(), ExhibitsController::summaryAction()
  * @return string
  **/
@@ -106,7 +106,7 @@ function exhibit_builder_link_to_exhibit_item($text = null, $props = array(), $i
 
 /**
  * Returns a URI to the exhibit item
- * 
+ *
  * @deprecated since 1.1
  * @param Item $item
  * @param Exhibit|null $exhibit If null, will use the current exhibit.
@@ -122,7 +122,7 @@ function exhibit_builder_exhibit_item_uri($item, $exhibit = null, $exhibitSectio
     if (!$exhibitSection) {
         $exhibitSection = exhibit_builder_get_current_section();
     }
-    
+
     //If the exhibit has a theme associated with it
     if (!empty($exhibit->theme)) {
         return uri(array('slug'=>$exhibit->slug,'section_slug'=>$exhibitSection->slug,'item_id'=>$item->id), 'exhibitItem');
@@ -133,33 +133,33 @@ function exhibit_builder_exhibit_item_uri($item, $exhibit = null, $exhibitSectio
 
 /**
  * Returns an array of exhibits
- * 
+ *
  * @param array $params
  * @return array
  **/
-function exhibit_builder_get_exhibits($params = array()) 
+function exhibit_builder_get_exhibits($params = array())
 {
     return get_db()->getTable('Exhibit')->findBy($params);
 }
 
 /**
  * Returns an array of recent exhibits
- * 
+ *
  * @param int $num The maximum number of exhibits to return
  * @return array
  **/
-function exhibit_builder_recent_exhibits($num = 10) 
+function exhibit_builder_recent_exhibits($num = 10)
 {
     return exhibit_builder_get_exhibits(array('sort'=>'recent','limit'=>$num));
 }
 
 /**
  * Returns an Exhibit by id
- * 
+ *
  * @param int $exhibitId The id of the exhibit
  * @return Exhibit
  **/
-function exhibit_builder_get_exhibit_by_id($exhibitId) 
+function exhibit_builder_get_exhibit_by_id($exhibitId)
 {
     return get_db()->getTable('Exhibit')->find($exhibitId);
 }
@@ -197,7 +197,7 @@ function exhibit_builder_exhibit_foot()
  **/
 function exhibit_builder_exhibit_form_item($item, $orderOnForm = null, $label = null, $includeCaption = true)
 {
-    $html = '<div class="item-select-outer exhibit-form-element">';  
+    $html = '<div class="item-select-outer exhibit-form-element">';
 
     if ($item and $item->exists()) {
         set_current_item($item);
@@ -244,7 +244,7 @@ function exhibit_builder_exhibit_form_item($item, $orderOnForm = null, $label = 
  * @param string $label
  * @return string
  **/
-function exhibit_builder_layout_form_item($order, $label = 'Enter an Item ID #') 
+function exhibit_builder_layout_form_item($order, $label = 'Enter an Item ID #')
 {
     return exhibit_builder_exhibit_form_item(exhibit_builder_page_item($order), $order, $label);
 }
@@ -259,7 +259,7 @@ function exhibit_builder_layout_form_item($order, $label = 'Enter an Item ID #')
 function exhibit_builder_layout_form_text($order, $label = 'Text')
 {
     $html = '<div class="textfield exhibit-form-element">';
-    $html .= textarea(array('name'=>'Text['.$order.']','rows'=>'15','cols'=>'70','class'=>'textinput'), exhibit_builder_page_text($order)); 
+    $html .= textarea(array('name'=>'Text['.$order.']','rows'=>'15','cols'=>'70','class'=>'textinput'), exhibit_builder_page_text($order));
     $html .= '</div>';
     $html = apply_filters('exhibit_builder_layout_form_text', $html, $order, $label);
     return $html;
@@ -282,7 +282,7 @@ function exhibit_builder_layout_form_caption($order, $label = null)
     $html .= '<p>' . html_escape($label) . '</p>' . "\n";
     $html .= '<div class="caption">' . "\n";
     $html .= '<label for="Caption['.$order.']">'.$label.'</label>' . "\n";
-    $html .= textarea(array('name'=>'Caption['.$order.']','rows'=>'4','cols'=>'30','class'=>'textinput'), exhibit_builder_page_caption($order)); 
+    $html .= textarea(array('name'=>'Caption['.$order.']','rows'=>'4','cols'=>'30','class'=>'textinput'), exhibit_builder_page_caption($order));
     $html .= '</div>' . "\n";
     $html .= '</div>' . "\n";
 
@@ -410,7 +410,7 @@ function exhibit_builder_render_layout_form($layout)
 }
 
 /**
- * Returns HTML for a set of linked thumbnails for the items on a given exhibit page.  Each 
+ * Returns HTML for a set of linked thumbnails for the items on a given exhibit page.  Each
  * thumbnail is wrapped with a div of class = "exhibit-item"
  *
  * @param int $start The range of items on the page to display as thumbnails
@@ -431,10 +431,10 @@ function exhibit_builder_display_exhibit_thumbnail_gallery($start, $end, $props 
 
             if (!empty($ark)) {
                 if (is_array($ark)) {
-                    $thumbnail = '<img src="http://images.gdao.org/view/thumbnail/' . urlencode($ark[0] . '/is/1') . '" />';
+                    $thumbnail = '<img src="' . JP2_IMAGE_SERVER . '/view/thumbnail/' . urlencode($ark[0] . '/is/1') . '" />';
                 }
                 else {
-                    $thumbnail = '<img src="http://images.gdao.org/view/thumbnail/' . urlencode($ark . '/is/1') . '" />';
+                    $thumbnail = '<img src="' . JP2_IMAGE_SERVER . '/view/thumbnail/' . urlencode($ark . '/is/1') . '" />';
                 }
             }
             else {
@@ -483,7 +483,7 @@ function exhibit_builder_random_featured_exhibit()
 
 /**
  * Returns the html code an exhibit item
- * 
+ *
  * @param array $displayFilesOptions
  * @param array $linkProperties
  * @return string
@@ -550,7 +550,7 @@ function exhibit_builder_exhibit_display_caption($index = 1)
  * @param int $index The index of the image for the item
  * @return string
  **/
-function exhibit_builder_exhibit_thumbnail($item, $props = array('class'=>'permalink'), $index = 0) 
+function exhibit_builder_exhibit_thumbnail($item, $props = array('class'=>'permalink'), $index = 0)
 {
 	// modified for gdao //
 	set_current_item($item);
@@ -561,19 +561,19 @@ function exhibit_builder_exhibit_thumbnail($item, $props = array('class'=>'perma
 
     if (!empty($ark)) {
     	if (is_array($ark)) {
-    		$html .= '<img src="http://images.gdao.org/view/thumbnail/' . urlencode($ark[0] . '/is/1') . '" />';
+    		$html .= '<img src="' . JP2_IMAGE_SERVER . '/view/thumbnail/' . urlencode($ark[0] . '/is/1') . '" />';
     	}
     	else {
-    		$html .= '<img src="http://images.gdao.org/view/thumbnail/' . urlencode($ark . '/is/1') . '" />';
+    		$html .= '<img src="' . JP2_IMAGE_SERVER . '/view/thumbnail/' . urlencode($ark . '/is/1') . '" />';
     	}
     }
     else {
 	    $html .= item_thumbnail($props, $index, $item);
     }
 
-    $html .= '</a>';  
+    $html .= '</a>';
     $html = apply_filters('exhibit_builder_exhibit_thumbnail', $html, $item, $props, $index);
-    
+
     return $html;
 }
 
@@ -589,31 +589,31 @@ function exhibit_builder_exhibit_fullsize($item, $props = array('class'=>'permal
 {
 	// modified for gdao //
 	$ark = item('Item Type Metadata', 'ARK', array(), $item);
-	
+
 	$uri = exhibit_builder_exhibit_item_uri($item);
 	$html = '<a href="' . html_escape($uri) . '">';
 
 	if (!empty($ark)) {
 		if (is_array($ark)) {
-			$html .= '<img src="http://images.gdao.org/view/carousel/' . urlencode($ark[0] . '/is/1') . '" />';
+			$html .= '<img src="' . JP2_IMAGE_SERVER . '/view/carousel/' . urlencode($ark[0] . '/is/1') . '" />';
 		}
 		else {
-			$html .= '<img src="http://images.gdao.org/view/carousel/' . urlencode($ark . '/is/1') . '" />';
+			$html .= '<img src="' . JP2_IMAGE_SERVER . '/view/carousel/' . urlencode($ark . '/is/1') . '" />';
 		}
 	}
 	else {
     	$html .= item_fullsize($props, $index, $item);
 	}
-	
+
 	$html .= '</a>';
 	$html = apply_filters('exhibit_builder_exhibit_fullsize', $html, $item, $props, $index);
-	
+
     return $html;
 }
 
 /**
  * Returns true if a given user can edit a given exhibit.
- * 
+ *
  * @param Exhibit|null $exhibit If null, will use the current exhibit
  * @param User|null $user If null, will use the current user.
  * @return boolean
@@ -623,7 +623,7 @@ function exhibit_builder_user_can_edit($exhibit = null, $user = null)
     if (!$exhibit) {
         $exhibit = exhibit_builder_get_current_exhibit();
     }
-    if (!$user) { 
+    if (!$user) {
         $user = current_user();
     }
     $acl = get_acl();
@@ -631,7 +631,7 @@ function exhibit_builder_user_can_edit($exhibit = null, $user = null)
     $canEditSelf = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editSelf');
     $canEditOthers = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editAll');
 
-    return (($exhibit->wasAddedBy($user) && $canEditSelf) || $canEditOthers);    
+    return (($exhibit->wasAddedBy($user) && $canEditSelf) || $canEditOthers);
 }
 
 /**
@@ -692,7 +692,7 @@ function set_exhibits_for_loop($exhibits)
 
 /**
  * Get the set of exhibits for the current loop.
- * 
+ *
  * @return array
  **/
 function get_exhibits_for_loop()
@@ -702,7 +702,7 @@ function get_exhibits_for_loop()
 
 /**
  * Loops through exhibits assigned to the view.
- * 
+ *
  * @return mixed The current exhibit
  */
 function loop_exhibits()
@@ -712,12 +712,12 @@ function loop_exhibits()
 
 /**
  * Determine whether or not there are any exhibits in the database.
- * 
+ *
  * @return boolean
  **/
 function has_exhibits()
 {
-    return (total_exhibits() > 0);    
+    return (total_exhibits() > 0);
 }
 
 /**
@@ -735,8 +735,8 @@ function has_exhibits_for_loop()
   *
   * @return integer
   **/
- function total_exhibits() 
- {	
+ function total_exhibits()
+ {
  	return get_db()->getTable('Exhibit')->count();
  }
 

@@ -1,24 +1,26 @@
 <?php
 /**
  * Constants for paths and other global metadata.
- * 
+ *
  * @copyright Roy Rosenzweig Center for History and New Media, 2009-2011
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  * @package Omeka
  */
 
+define('JP2_IMAGE_SERVER', 'http://images03.gdao.org');
+
 /**
  * Define the current version of Omeka.
- */ 
+ */
 define('OMEKA_VERSION', '1.5.1');
 
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV',
         (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
-// The name of the Item Type Metadata element set. This is used wherever it is 
+// The name of the Item Type Metadata element set. This is used wherever it is
 // important to distinguish this particular element set from other element sets.
-// @todo Localize this and other constants to avoid too many things in the 
+// @todo Localize this and other constants to avoid too many things in the
 // global scope.
 define('ELEMENT_SET_ITEM_TYPE', 'Item Type Metadata');
 
@@ -38,7 +40,7 @@ date_default_timezone_set(@date_default_timezone_get());
 // Set the zlib config values if the extension has been loaded.
 if (extension_loaded('zlib')) {
     ini_set('zlib.output_compression', true);
-    ini_set('zlib.output_compression_level', '5');    
+    ini_set('zlib.output_compression_level', '5');
 }
 
 // Set directory names:
@@ -115,11 +117,11 @@ define('WEB_THEME_UPLOADS',     WEB_ARCHIVE . '/' . $site['theme_uploads']);
 set_include_path(LIB_DIR. PATH_SEPARATOR . MODEL_DIR . PATH_SEPARATOR . get_include_path());
 
 /**
- * Most of this has been borrowed directly from Drupal 6.1's 
+ * Most of this has been borrowed directly from Drupal 6.1's
  * bootstrap code (bootstrap.inc, conf_init())
  *
  * @access private
- * @todo rename the WEB_ROOT, WEB_DIR constants and add a new one for the 
+ * @todo rename the WEB_ROOT, WEB_DIR constants and add a new one for the
  * $base_path
  * @return void
  **/
@@ -127,8 +129,8 @@ function _define_web_root()
 {
     // Create base URL
     $base_root = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
-    
-    // As $_SERVER['HTTP_HOST'] is user input, ensure it only contains 
+
+    // As $_SERVER['HTTP_HOST'] is user input, ensure it only contains
     // characters allowed in hostnames.
     $base_url = $base_root .= '://' . preg_replace('/[^a-z0-9-:._]/i', '', $_SERVER['HTTP_HOST']);
 
@@ -137,7 +139,7 @@ function _define_web_root()
     if (($base_root == 'http' && $port != '80') || ($base_root == 'https' && $port != '443')) {
         $base_url .= ":$port";
     }
-    
+
     // $_SERVER['SCRIPT_NAME'] can, in contrast to $_SERVER['PHP_SELF'], not
     // be modified by a visitor.
     if ($dir = trim(dirname($_SERVER['SCRIPT_NAME']), '\,/')) {
@@ -147,18 +149,18 @@ function _define_web_root()
     } else {
         $base_path = '/';
     }
-        
-    // WEB_ROOT is always the root of the site, whereas WEB_DIR depends on the 
+
+    // WEB_ROOT is always the root of the site, whereas WEB_DIR depends on the
     // bootstrap used (public/admin)
-    
+
     // @hack Remove the '/admin' part of the URL by regex (only if necessary)
     if (defined('ADMIN')) {
         $dir = preg_replace('/(.*)admin$/', '$1', $dir, 1);
         $dir = rtrim($dir, '/');
     }
-   
+
    define('WEB_ROOT', $base_root . (!empty($dir) ? '/' . $dir : '') );
-   define('WEB_DIR',  $base_url);  
+   define('WEB_DIR',  $base_url);
 }
 
 // Get the directory that the bootstrap sits in.
@@ -181,7 +183,7 @@ if (defined('ADMIN')) {
 
 define('ADMIN_BASE_URL', $adminPath);
 define('PUBLIC_BASE_URL', $publicPath);
-define('CURRENT_BASE_URL', $currentPath);    
+define('CURRENT_BASE_URL', $currentPath);
 
 // Set up the Zend_Loader autoloader to work for all classes.
 // The Omeka namespace must be manually specified to avoid incompatibility with the
