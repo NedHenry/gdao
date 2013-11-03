@@ -1,6 +1,7 @@
 <?php
 $title = __('Browse Exhibits by Tag');
-head('title' => $title, 'bodyclass' => 'exhibits');
+$head_array = array('title' => $title, 'bodyclass' => 'exhibits');
+head($head_array);
 ?>
 
 <h1><?php echo $title; ?></h1>
