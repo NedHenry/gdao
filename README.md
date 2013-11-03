@@ -1,4 +1,3 @@
-gdao
-====
+# GDAO: Grateful Dead Archive Online
 
-The GDAO Omeka site
+The GDAO Omeka site.
