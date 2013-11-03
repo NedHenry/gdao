@@ -1,0 +1,139 @@
+<artists>
+  <!-- remove any quotes in a name so simplexml's xpath works -->
+  <artist>
+    <name>Michel, Kirsten</name>
+    <ark>ark:/38305/g4xw4j34</ark>
+  </artist>
+  <artist>
+    <name>Smythe, William Bill</name>
+    <ark>ark:/38305/g4qj7h23</ark>
+  </artist>
+  <artist>
+    <name>Cohn, Rob (Roberta)</name>
+    <ark>ark:/38305/g4qr4w14</ark>
+    <restricted-access>true</restricted-access>
+  </artist>
+  <artist>
+    <name>Tawfik, Sameh</name>
+    <ark>ark:/38305/g4bv7g5q</ark>
+  </artist>
+  <artist>
+    <name>Carver, Douglas</name>
+    <ark>ark:/38305/g4dr2v89</ark>
+  </artist>
+  <artist>
+    <name>Gold, Brian</name>
+    <ark>ark:/38305/g4057f02</ark>
+  </artist>
+  <artist>
+    <name>Mahoney, Kurt</name>
+    <ark>ark:/38305/g4nv9hdt</ark>
+  </artist>
+  <artist>
+    <name>Ryan, Joe</name>
+    <ark>ark:/38305/g4n58ks9</ark>
+  </artist>
+  <artist>
+    <name>Conway, Michael A.</name>
+    <ark>ark:/38305/g4q81c2d</ark>
+  </artist>
+  <artist>
+    <name>Jarboe, Jim</name>
+    <ark>ark:/38305/g40864cx</ark>
+  </artist>
+  <artist>
+    <name>Candelario, Bill (Kidd)</name>
+    <ark>ark:/38305/g4zk5fj9</ark>
+  </artist>
+  <artist>
+    <name>Hulst, Larry</name>
+    <ark>ark:/38305/g43r0s8x</ark>
+  </artist>
+  <artist>
+    <name>Smith, Thomas G. Tom</name>
+    <ark>ark:/38305/g45q4vj4</ark>
+  </artist>
+  <artist>
+    <name>Marks, Bob</name>
+    <ark>ark:/38305/g4p84bkj</ark>
+  </artist>
+  <artist>
+    <name>Millman, Susana</name>
+    <ark>ark:/38305/g4mw2hd6</ark>
+  </artist>
+  <artist>
+    <name>Singer, David</name>
+    <ark>ark:/38305/g4x92bs0</ark>
+  </artist>
+  <artist>
+    <name>Tuten, Randy</name>
+    <ark>ark:/38305/g43r0t2n</ark>
+    <restricted-access>true</restricted-access>
+  </artist>
+  <artist>
+    <name>Mouse, Stanley, 1940-</name>
+    <ark>ark:/38305/g42v2fgz</ark>
+  </artist>
+  <artist>
+    <name>Kelley, Alton</name>
+    <ark>ark:/38305/g48g8m5b</ark>
+  </artist>
+  <artist>
+    <name>Owseichik, Arlene</name>
+    <ark>ark:/38305/g4x0676j</ark>
+  </artist>
+  <artist>
+    <name>Wilson, Wes</name>
+    <ark>ark:/38305/g43x85k8</ark>
+  </artist>
+  <artist>
+    <name>Greene, Herb, 1942-</name>
+    <ark>ark:/38305/g4fb54w0</ark>
+  </artist>
+  <artist>
+    <name>Conklin, Lee</name>
+    <ark>ark:/38305/g4vt1skv</ark>
+  </artist>
+  <artist>
+    <name>Everett, Michael R.</name>
+    <ark>ark:/38305/g4nk3f68</ark>
+    <restricted-access>true</restricted-access>
+  </artist>
+  <artist>
+    <name>Phillips, Jim (James L.), 1944-</name>
+    <ark>ark:/38305/g4wm1dkj</ark>
+    <restricted-access>true</restricted-access>
+  </artist>
+  <artist>
+    <name>MacLean, Bonnie</name>
+    <ark>ark:/38305/g4r49r75</ark>
+  </artist>
+  <artist>
+    <name>Moscoso, Victor</name>
+    <ark>ark:/38305/g49k4bd0</ark>
+  </artist>
+  <artist>
+    <name>Griffin, Rick</name>
+    <ark>ark:/38305/g4nv9jd7</ark>
+  </artist>
+  <artist>
+    <name>Barsotti, Peter</name>
+    <ark>ark:/38305/g4kp82bt</ark>
+  </artist>
+  <artist>
+    <name>Friedman, Ken</name>
+    <ark>ark:/38305/g4td9xjn</ark>
+  </artist>
+  <artist>
+    <name>Irons, Greg</name>
+    <ark>ark:/38305/g4ks6rq9</ark>
+  </artist>
+  <artist>
+    <name>ORiley, Chris</name>
+    <ark>ark:/38305/g46q1xfs</ark>
+  </artist>
+  <artist>
+    <name>Dellick, Bill</name>
+    <ark>ark:/38305/g4xk8g1t</ark>
+  </artist>
+</artists>

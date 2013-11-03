@@ -1,0 +1,70 @@
+<?php
+  $id = htmlspecialchars($_GET["id"]);
+  $ark = htmlspecialchars($_GET["ark"]);
+  $width = htmlspecialchars($_GET["w"]);
+  $height = htmlspecialchars($_GET["h"]);
+  $count = htmlspecialchars($_GET["c"]);
+  $isIE = htmlspecialchars($_GET["ie"]);
+
+  if (!empty($id)) {
+    $title = item('Dublin Core', 'Title', array(), get_item_by_id($id));
+  }
+?>
+
+  <div id="zoom_title"><?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?></div>
+
+  <?php if (!empty($id)): ?>
+    <div id="zoom_return"><a href="/items/show/<?php echo $id; ?>">Return to item page</a></div>
+  <?php endif; ?>
+
+  <?php if ($isIE): ?>
+    <div id="ie_message">We're sorry, but the image zoom does not yet work in Internet Explorer (IE).
+    We are working to add support for IE but, in the meantime, please use another browser to access
+    this feature.</div>
+  <?php else: ?>
+  <?php if (empty($height)): ?>
+  <script type="text/javascript">
+    function init() {
+      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = 'http://images.gdao.org';
+      OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
+
+      var ts = new OpenSeadragon.DjTileSource("http://images.gdao.org/view/", encodeURIComponent('<?php echo $ark; ?>'));
+      var viewer = new OpenSeadragon.Viewer("zoom_image");
+
+      viewer.openTileSource(ts);
+    }
+
+    OpenSeadragon.addEvent(window, "load", init);
+  </script>
+  <?php endif; ?>
+
+  <div style="<?php
+    if (empty($height)) { echo 'width: 940px; height: 550px;'; }
+  ?>" id="zoom_image"><?php if ($height):?>
+    <img src="http://images.gdao.org/view/fullSize/<?php echo urlencode($ark); ?>"
+    alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php 
+    echo $width; ?>" height="<?php echo $height; ?>"/>
+  <?php endif; ?></div>
+
+  <?php if (!empty($count) && $count > 1) {
+    $index = strpos($ark, '/is/');
+
+    if ($index !== false) {
+      $position = substr($ark, $index + 4);
+      $arkbase = substr($ark, 0, $index + 4);
+    }
+
+    if (!empty($position) && $position > 1 && empty($height)) {
+      echo '<a href="/zoom?id=' . $id . '&c=' . $count . '&ark=' . $arkbase . ($position - 1) . '">';
+      echo '<img src="/themes/gdao-theme/images/timeline-prev-horizontal.png"/>';
+      echo '</a>';
+    }
+
+    if (!empty($position) && $position < $count && empty($height)) {
+      echo '<a href="/zoom?id=' . $id . '&c=' . $count . '&ark=' . $arkbase . ($position + 1) . '">';
+      echo '<img style="float:right;" src="/themes/gdao-theme/images/timeline-next-horizontal.png"/>';
+      echo '</a>';
+    }
+  } ?>
+
+  <?php endif; ?>

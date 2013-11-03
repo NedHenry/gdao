@@ -1,0 +1,3 @@
+<?php
+  echo 'Pooh? Is that you?';
+?>
