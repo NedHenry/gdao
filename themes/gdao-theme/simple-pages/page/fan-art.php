@@ -22,7 +22,7 @@ foreach ($result['response']['docs'] as $index => $values) {
 	echo '<div>' . $values['sortedTitle'] . '</div>';
 
 	if (!empty($values['140_s'])) {
-		echo '<div>' . 'http://images.gdao.org/view/carousel/' . urlencode($values['140_s'][0] . '/is/1') . '</div>';
+		echo '<div>' . JP2_IMAGE_SERVER . '/view/carousel/' . urlencode($values['140_s'][0] . '/is/1') . '</div>';
 		echo '<div>' . 'http://gdao.org/' . $values['140_s'][0] . '</div>';
 	}
 

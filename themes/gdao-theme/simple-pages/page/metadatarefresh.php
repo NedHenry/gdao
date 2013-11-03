@@ -1,22 +1,4 @@
 <?php
-/*
-function query($ark) {
-  $solr = new Apache_Solr_Service(SOLR_SERVER, SOLR_PORT, SOLR_CORE);
-  $queryParams = SolrSearch_QueryHelpers::getParams();
-  $query = '140_s:"' . $ark  . '"';
-  $json = $solr->search($query, 0, 100000, $queryParams)->getRawResponse();
-  $result = json_decode($json, TRUE);
-
-  foreach ($result['response']['docs'] as $index => $values) {
-    echo '<div>' . 'items/show/' . $values['id'] . '</div>';
-
-    if (!empty($values['140_s'])) {
-      echo '<div>' . 'http://images.gdao.org/view/carousel/' . urlencode($values['140_s'][0] . '/is/1') . '</div>';
-      echo '<div>' . 'http://gdao.org/' . $values['140_s'][0] . '</div>';
-    }
-  }
-}
-*/
 
 function lastIndexOf($string, $item) {
   $index = strpos(strrev($string), strrev($item));

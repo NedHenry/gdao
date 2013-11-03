@@ -25,10 +25,10 @@
   <?php if (empty($height)): ?>
   <script type="text/javascript">
     function init() {
-      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = 'http://images.gdao.org';
+      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = JP2_IMAGE_SERVER;
       OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
 
-      var ts = new OpenSeadragon.DjTileSource("http://images.gdao.org/view/", encodeURIComponent('<?php echo $ark; ?>'));
+      var ts = new OpenSeadragon.DjTileSource(JP2_IMAGE_SERVER . '/view/', encodeURIComponent('<?php echo $ark; ?>'));
       var viewer = new OpenSeadragon.Viewer("zoom_image");
 
       viewer.openTileSource(ts);
@@ -41,8 +41,8 @@
   <div style="<?php
     if (empty($height)) { echo 'width: 940px; height: 550px;'; }
   ?>" id="zoom_image"><?php if ($height):?>
-    <img src="http://images.gdao.org/view/fullSize/<?php echo urlencode($ark); ?>"
-    alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php 
+    <img src="<?php echo JP2_IMAGE_SERVER; ?>/view/fullSize/<?php echo urlencode($ark); ?>"
+    alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php
     echo $width; ?>" height="<?php echo $height; ?>"/>
   <?php endif; ?></div>
 

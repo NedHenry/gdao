@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/ia-logo-sm.png" />
 <meta property="og:description" content="GDAO/Internet Archive Fan Tape" />
   <?php elseif ($ark): ?>
-<meta property="og:image" content="http://images.gdao.org/view/carousel/<?php echo urlencode($ark . '/is/1'); ?>" />
+<meta property="og:image" content="<?php echo JP2_IMAGE_SERVER ?>/view/carousel/<?php echo urlencode($ark . '/is/1'); ?>" />
 <meta property="og:description" content="GDAO Image" />
   <?php else: ?>
 <meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/logo-gdao.png" />

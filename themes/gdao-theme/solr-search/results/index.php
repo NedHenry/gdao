@@ -103,7 +103,7 @@ head(array('title' => $pageTitle, 'id' => 'items', 'bodyclass' => 'search-result
 				<img src="/themes/gdao-theme/images/content-not-available.png"
 				alt="Access limited to campus for copyright reasons"/>
 			<?php else: ?>
-                        	<img src="http://images.gdao.org/view/thumbnail/<?php echo
+                        	<img src="<?php echo JP2_IMAGE_SERVER; ?>/view/thumbnail/<?php echo
 				urlencode($ark . '/is/1'); ?>" alt="<?php echo
 				(!empty($title)) ? $title : ''; ?>"/>
 			<?php endif; ?>

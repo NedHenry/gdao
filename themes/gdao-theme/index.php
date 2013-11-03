@@ -84,7 +84,7 @@
                 <div class="cdm-item item-wrap">
                         <?php $uri = html_escape(WEB_ROOT) . '/items/show/'; ?>
                         <a href="<?php echo $uri . item('ID'); ?>" alt="">
-                        <img src="http://images.gdao.org/view/thumbnail/<?php echo urlencode($ark . '/is/1'); ?>"
+                        <img src="<?php echo JP2_IMAGE_SERVER; ?>/view/thumbnail/<?php echo urlencode($ark . '/is/1'); ?>"
                          alt="<?php echo (!empty($title) ? $title : ''); ?>"/>
                         </a>
                 </div>

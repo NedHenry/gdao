@@ -48,7 +48,7 @@ foreach ($result['facet_counts']['facet_fields']['39_s'] as $name => $count) {
 		echo '<img src="/themes/gdao-theme/images/content-not-available.png"/></a></div>';
 	}
 	else {
-		echo '<img src="http://images.gdao.org/view/carousel/' . $ark[0] . '"/></a></div>';
+		echo '<img src="' . JP2_IMAGE_SERVER . '/view/carousel/' . $ark[0] . '"/></a></div>';
 	}
 	echo '</div>';
 }
@@ -78,7 +78,7 @@ foreach ($result['facet_counts']['facet_fields']['39_s'] as $name => $count) {
 			echo '<img src="/themes/gdao-theme/images/content-not-available.png"/></a></div>';
 		}
 		else {
-			echo '<img src="http://images.gdao.org/view/carousel/' . $ark[0] . '"/></a></div>';
+			echo '<img src="' . JP2_IMAGE_SERVER . '/view/carousel/' . $ark[0] . '"/></a></div>';
 		}
 		echo '</div>';
 	}
