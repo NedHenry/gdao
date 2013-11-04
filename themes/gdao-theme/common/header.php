@@ -26,40 +26,40 @@
 <meta property="og:image" content="<?php echo $iLink['src'];?>" />
 <meta property="og:description" content="GDAO Contributed Image" />
   <?php elseif ($itemtype == 'Sound'): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/itemtype-sound.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/itemtype-sound.png" />
 <meta property="og:description" content="GDAO Sound" />
   <?php elseif ($itemtype == 'Video'): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/itemtype-video.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/itemtype-video.png" />
 <meta property="og:description" content="GDAO Video" />
   <?php elseif ($itemtype == 'Article' && empty($ark)): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/itemtype-article.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/itemtype-article.png" />
 <meta property="og:description" content="GDAO Article" />
   <?php elseif ($itemtype == 'Website'): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/itemtype-website.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/itemtype-website.png" />
 <meta property="og:description" content="GDAO Website" />
   <?php elseif ($itemtype == 'Story'): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/itemtype-oralhistory.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/itemtype-oralhistory.png" />
 <meta property="og:description" content="GDAO Story/Oral History" />
   <?php elseif ($itemtype == 'Fan Tape'): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/ia-logo-sm.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/ia-logo-sm.png" />
 <meta property="og:description" content="GDAO/Internet Archive Fan Tape" />
   <?php elseif ($ark): ?>
 <meta property="og:image" content="<?php echo JP2_IMAGE_SERVER ?>/view/carousel/<?php echo urlencode($ark . '/is/1'); ?>" />
 <meta property="og:description" content="GDAO Image" />
   <?php else: ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/logo-gdao.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/logo-gdao.png" />
 <meta property="og:description" content="GDAO Object" />
   <?php endif; ?>
 <?php elseif ($restricted == 'true' && !gdao_is_authorized()): ?>
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/content-not-available.png" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/content-not-available.png" />
 <?php endif; ?>
 
 <?php else: ?>
 
 <meta property="og:title" content="The Grateful Dead Archive Online" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.gdao.org/" />
-<meta property="og:image" content="http://www.gdao.org/themes/gdao-theme/images/logo-gdao.png" />
+<meta property="og:url" content="<?php echo GDAO_WEB_SERVER; ?>/" />
+<meta property="og:image" content="<?php echo GDAO_WEB_SERVER; ?>/themes/gdao-theme/images/logo-gdao.png" />
 <meta property="og:description" content="The Grateful Dead Archive Online (GDAO) is a socially constructed collection comprised of over 45,000 digitized items drawn from the UCSC Library&#039;s extensive Grateful Dead Archive (GDA) and from digital content submitted by the community and global network of Grateful Dead fans." />
 
 <?php endif; ?>
@@ -67,7 +67,7 @@
 <meta name="google-site-verification" content="xe9V2u3rPSMSV6Hbd3qQ0DS26D01-8YDS2n_4yTX430" />
 
 <!-- new items / harvestable feed -->
-<link rel="alternate" type="application/atom+xml" title="GDAO New Items Feed" href="http://www.gdao.org/items/browse?output=atom" />
+<link rel="alternate" type="application/atom+xml" title="GDAO New Items Feed" href="<?php echo GDAO_WEB_SERVER; ?>/items/browse?output=atom" />
 
 <!-- favicon -->
 <link rel="icon" type="image/gif" href="/themes/gdao-theme/images/favicon.gif" />

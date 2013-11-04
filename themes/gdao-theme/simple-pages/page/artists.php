@@ -14,13 +14,7 @@ $result = json_decode($json, TRUE);
 $client = new Zend_Http_Client();
 $hostname = gethostname();
 
-if (strpos($hostname, 'library') !== false) {
-  $client->setUri('http://gdao-dev.library.ucsc.edu/themes/gdao-theme/meta/artists.xml');
-}
-else {
-  $client->setUri('http://www.gdao.org/themes/gdao-theme/meta/artists.xml');
-}
-
+$client->setUri(GDAO_WEB_SERVER . '/themes/gdao-theme/meta/artists.xml');
 $client->setCookieJar();
 // temporary u/p set up for the dev servers; remove once we're live
 $client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
