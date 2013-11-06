@@ -25,7 +25,7 @@
   <?php if (empty($height)): ?>
   <script type="text/javascript">
     function init() {
-      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = <?php echo JP2_IMAGE_SERVER; ?>
+      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
       OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
 
       var ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
