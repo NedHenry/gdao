@@ -79,6 +79,18 @@ jQuery(document).ready(function() {
 
   /* end of homepage scripts */
 
+	jQuery('#gdao_map_canvas').each(function(){
+        var myOptions = {
+            center: new google.maps.LatLng(42.811522,47.285156),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        };
+        gMap = new google.maps.Map(jQuery(this), myOptions);
+
+        var kmlLayer = new google.maps.KmlLayer('https://maps.google.com/maps/ms?ie=UTF8&t=m&authuser=0&msa=0&output=kml&msid=206723407710575786600.0004c32c00381f43c5bba');
+        kmlLayer.setMap(gMap);
+    });
+
   /* new contributions script */
 
   jQuery('#gdao_solr_results .new-item h3 a').each(function() {
