@@ -25,10 +25,10 @@
   <?php if (empty($height)): ?>
   <script type="text/javascript">
     function init() {
-      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = JP2_IMAGE_SERVER;
+      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = <?php echo JP2_IMAGE_SERVER; ?>
       OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
 
-      var ts = new OpenSeadragon.DjTileSource(JP2_IMAGE_SERVER . '/view/', encodeURIComponent('<?php echo $ark; ?>'));
+      var ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
       var viewer = new OpenSeadragon.Viewer("zoom_image");
 
       viewer.openTileSource(ts);
