@@ -103,8 +103,6 @@
 
 </script>
 
-<script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 </head>
 <body<?php echo $bodyid ? ' id="'.$bodyid.'"' : ''; ?><?php echo $bodyclass ? ' class="'.$bodyclass.'"' : ''; ?>>
   <div id="banner"><!--begin #banner -->
