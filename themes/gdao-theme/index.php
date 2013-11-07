@@ -113,7 +113,7 @@
           $client->setConfig(array('timeout' => 30));
 
           //if (strpos($hostname, 'library') !== false) {
-            $client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
+            //$client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
           //}
 
           $response = $client->request('GET');

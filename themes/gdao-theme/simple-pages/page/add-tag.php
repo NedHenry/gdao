@@ -30,12 +30,13 @@ else {
 //     }
 //   }
 //   else {
-  $host = $_SERVER['SERVER_NAME'];
+//  $host = $_SERVER['SERVER_NAME'];
 //  }
 
   $client = new Zend_Http_Client();
   $client->setCookieJar();
-  $client->setUri('http://' . $host . '/admin/users/login');
+  $client->setUri(GDAO_WEB_SERVER . '/admin/users/login');
+//  $client->setUri('http://' . $host . '/admin/users/login');
   $client->setConfig(array('timeout'=>60));
 
   // authenticate with locked down Apache (delete when we go live)
@@ -48,7 +49,8 @@ else {
   $response = $client->request('POST');
 
   if ($response->isSuccessful()) {
-    $client->setUri('http://' . $host . '/admin/items/modify-tags/');
+//    $client->setUri('http://' . $host . '/admin/items/modify-tags/');
+  	$client->setUri(GDAO_WEB_SERVER . '/admin/items/modify-tags/');
     $client->setConfig(array('timeout'=>60));
 
     // authenticate with locked down Apache (delete when we go live)
