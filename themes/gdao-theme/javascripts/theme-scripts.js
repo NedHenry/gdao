@@ -236,7 +236,7 @@ jQuery(document).ready(function() {
 	imgNumber = arkArray[1];
 	itemNumber = arkArray[2];
 	imgSrc = 'http://images03.gdao.org/view/image/ark%3A%2F38305%2F' + imgArk + '%2Fis%2F' + imgNumber;
-	imgLink = '<div class="exhibit-image"><a href="http://www.gdao.org/items/show/' + itemNumber + '"><img src="' + imgSrc + '"></a></div>';
+	imgLink = '<div class="exhibit-image"><a href="http://www03.gdao.org/items/show/' + itemNumber + '"><img src="' + imgSrc + '"></a></div>';
 	jQuery(imgLink).insertAfter('div#primary h2');
 	jQuery('body.summary #primary address').addClass('hidden');
   }

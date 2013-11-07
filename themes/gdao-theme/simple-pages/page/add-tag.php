@@ -18,21 +18,20 @@ else if (empty($tag)) { ?>
   </div><?php
 }
 else {
-  $host = 'www.gdao.org';
+//  $host = substr(GDAO_WEB_SERVER, 7);
+//   // Our workaround for our prod machines not being able to POST to themselves
+//   if (strpos(gethostname(), 'library') === false) {
+//     $serverip = $_SERVER['SERVER_ADDRESS']; // check which machine we're on...
 
-  // Our workaround for our prod machines not being able to POST to themselves
-  if (strpos(gethostname(), 'library') === false) {
-    $serverip = $_SERVER['SERVER_ADDRESS']; // check which machine we're on...
-
-    // Get a different IP for www.gdao.org
-    for ($index = 0; $index <= 15; $index++) {
-      $host = gethostbyname('www.gdao.org');
-      if ($host !== $serverip) break;
-    }
-  }
-  else {
-    $host = $_SERVER['SERVER_NAME'];
-  }
+//     // Get a different IP for www.gdao.org
+//     for ($index = 0; $index <= 15; $index++) {
+//       $host = gethostbyname('www03.gdao.org');
+//       if ($host !== $serverip) break;
+//     }
+//   }
+//   else {
+  $host = $_SERVER['SERVER_NAME'];
+//  }
 
   $client = new Zend_Http_Client();
   $client->setCookieJar();
@@ -40,11 +39,11 @@ else {
   $client->setConfig(array('timeout'=>60));
 
   // authenticate with locked down Apache (delete when we go live)
-  $client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
+  //$client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
 
   // authenticate with our limited access (i.e., tagging) account
   $client->setParameterPost('username', 'tagger');
-  $client->setParameterPost('password', 'r3gg4t');
+  $client->setParameterPost('password', $_ENV['GDAO_TAGGING_USER']);
 
   $response = $client->request('POST');
 
@@ -53,7 +52,7 @@ else {
     $client->setConfig(array('timeout'=>60));
 
     // authenticate with locked down Apache (delete when we go live)
-    $client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
+    //$client->setAuth('gdao', 'gd4oh3ad', Zend_Http_Client::AUTH_BASIC);
 
     set_current_item(get_item_by_id($id));
     $client->setParameterPost('id', $id);
