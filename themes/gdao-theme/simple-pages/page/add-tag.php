@@ -25,7 +25,7 @@ else {
 
   // authenticate with our limited access (i.e., tagging) account
   $client->setParameterPost('username', 'tagger');
-  $client->setParameterPost('password', $_ENV['GDAO_TAGGING_USER']);
+  $client->setParameterPost('password', getenv('GDAO_TAGGING_USER'));
 
   $response = $client->request('POST');
 
