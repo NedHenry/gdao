@@ -69,11 +69,7 @@ jQuery(document).ready(function() {
     yearRange: "1965:1996"
   });
   /* end of advanced search scripts */
-
-
   /* homepage scripts */
-
-
 
   jQuery('span#whatsnew-title').insertBefore('p.view-items-link span');
 
