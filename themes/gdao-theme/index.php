@@ -4,7 +4,7 @@
     <div class="content"><!--begin #banner-home .content -->
       <div class="six-1"></div>
       <div class="six-2"><a href="/milestones"><span>Milestones</span></a></div>
-      <div class="six-3"><a href="/shows"><span>Shows</span></a></div>
+      <div class="six-3"><a href="/shows"><span>Showstest</span></a></div>
       <div class="six-4"><a href="/artists"><span>Artists</span></a></div>
       <div class="six-5"><a href="/media"><span>Media</span></a></div>
       <div class="six-6"><a href="/fan-art"><span>Fan Art</span></a></div>
