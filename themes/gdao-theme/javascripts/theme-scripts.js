@@ -366,36 +366,57 @@ var copyrightMarkup = jQuery('<script type="text/javascript">jQuery(\'input:radi
       jQuery(copyrightMarkup).insertAfter('fieldset#contribution-contributor-metadata div.field:eq(1)');
 	}
 
-  /* Add value 'anonymous' to name field for oral history contribution form. Add copyright and licence values to rights holder and rights fields. Add value 'no' to curated field (#Elements-420-0-text). Validate title field. */
-
-
-
+  /* Add value 'anonymous' to name field for oral history contribution form. Add copyright and licence values to rights holder and rights fields. Add value 'no' to curated field (#Elements-420-0-text). Validate title field. Note: the copyright script below was updated 11/2013 as part of the GDAO Stabilization Project. See ITR ticket INC0069422 for details.*/
 
 
 
 
 var titleError = jQuery('<div class="error" id="title-error">You must include a title.</div>');
-
+  
   jQuery('body.contribution #primary form #form-submit').click(function(e) {
-	var copyrightValue = 'I am the copyright owner. I believe my submission is fair use. This work is available from the UC Santa Cruz Library. This digital copy of the work is intended to support research, teaching, and private study. This work is protected by U.S. Copyright Law (Title 17, U.S.C.). Use of this work beyond that allowed by Fair Use requires written permission of the copyright holder(s). Responsibility for obtaining permission, and for any use or distribution of this work, rests exclusively with the user and not the UC Santa Cruz Library. If the work itself or our research has indicated that one or more individuals or entities is a current copyright holder, that information may be included in the Copyright Information field. Other sources for copyright information include the Creator field or copyright statements on the work. When available, contact information for requesting permission from copyright holder(s) will be linked from the Copyright Information field. If you have additional or conflicting information about ownership of rights in this work, please contact us at grateful@ucsc.edu.';
+
+        var contribName = jQuery('input#contributor-name').val();
+
+	var fairUse = 'This work is available from the UC Santa Cruz Library. This digital copy of the work is intended to support research, teaching, and private study. This work is protected by U.S. Copyright Law (Title 17, U.S.C.). Use of this work beyond that allowed by Fair Use requires written permission of the copyright holder(s). Responsibility for obtaining permission, and for any use or distribution of this work, rests exclusively with the user and not the UC Santa Cruz Library. If the work itself or our research has indicated that one or more individuals or entities is a current copyright holder, that information may be included in the Copyright Information field. Other sources for copyright information include the Creator field or copyright statements on the work. When available, contact information for requesting permission from copyright holder(s) will be linked from the Copyright Information field. If you have additional or conflicting information about ownership of rights in this work, please contact us at grateful@ucsc.edu.';
+
+	var submitterRegents = 'This work is available from the UC Santa Cruz Library. This digital copy of the work is intended to support research, teaching, and private study. This work is protected by U.S. Copyright Law (Title 17, U.S.C.). Use of this work beyond that allowed by Fair Use requires written permission of the copyright holder(s). Responsibility for obtaining permission, and for any use or distribution of this work, rests exclusively with the user and not the UC Santa Cruz Library. If you have additional or conflicting information about ownership of rights in this work, please contact us at grateful@ucsc.edu.';
+
+	var submittercc = 'This work is available from the UC Santa Cruz Library. This digital copy of the work is intended to support research, teaching, and private study. This work is protected by U.S. Copyright Law (Title 17, U.S.C.). If you have additional or conflicting information about ownership of rights in this work, please contact us at grateful@ucsc.edu.';
+
+	var licenseccby = 'This work is made available under a Creative Commons Attribution (CC BY) license. That means you are free to share, remix, or make commercial use of the work as long as they credit the copyright owner, (' + contribName + '). For more information about Creative Commons licenses, please visit <a href="http://creativecommons.org/">the Creative Commons website</a>.';
+
+	var licenseccbyna = 'This work is made available under a Creative Commons Attribution-NonCommercial license. That means you are free to share, or remix the work noncommercially, as long as they credit the copyright owner, (' + contribName + '). For more information about Creative Commons licenses, please visit <a href="http://creativecommons.org/">the Creative Commons website</a>.';
 
 	var dateTime = jQuery('meta[name=date]').attr("content");
 	var licenseType = jQuery('input[name=license]:checked', 'body.contribution #primary form').val();
-
-	jQuery('#Elements-420-0-text').val('no');
-    jQuery('textarea#Elements-135-0-text').val(copyrightValue);
+	var copyrightType = jQuery('input[name=copyright]:checked', 'body.contribution #primary form').val();
+	jQuery('#Elements-420-0-text').val('no'); 
 	jQuery('#element-100 textarea').val(dateTime);
     if(!jQuery('input#contributor-name').val()) {
       jQuery('input#contributor-name').val('anonymous');
     }
 	if(!jQuery('input#contributor-name').val()) {
-      jQuery('#Elements-420-0-text').val('no');
+      jQuery('#Elements-420-0-text').val('no'); 
     }
-	if(licenseType != 'regents'){
-	  var contribName = jQuery('input#contributor-name').val();
-	  var licenseValue = licenseType + ': ' + contribName;
-      jQuery('textarea#Elements-47-0-text').val(licenseValue);
+
+	if(copyrightType == 'fair-use'){
+      		jQuery('textarea#Elements-47-0-text').val(fairUse);
 	}
+	
+	if(licenseType == 'regents'){
+      		jQuery('textarea#Elements-47-0-text').val(submitterRegents);
+	}
+
+	if(licenseType == 'Creative Commons Attribution'){
+      		jQuery('textarea#Elements-47-0-text').val(submittercc);
+		 jQuery('textarea#Elements-135-0-text').val(licenseccby);
+	}
+
+	if(licenseType == 'Creative Commons Attribution Non-Commercial'){
+      		jQuery('textarea#Elements-47-0-text').val(submittercc);
+		 jQuery('textarea#Elements-135-0-text').val(licenseccbyna);
+	}
+
 	if (jQuery('#element-50 textarea').val().length == 0) {
       jQuery(titleError).insertBefore('#primary h1');
 	  window.scrollTo(0,0);
