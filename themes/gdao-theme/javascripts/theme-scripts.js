@@ -385,7 +385,7 @@ var titleError = jQuery('<div class="error" id="title-error">You must include a 
 
 	var licenseccby = 'This work is made available under a Creative Commons Attribution (CC BY) license. That means you are free to share, remix, or make commercial use of the work as long as they credit the copyright owner, (' + contribName + '). For more information about Creative Commons licenses, please visit <a href="http://creativecommons.org/">the Creative Commons website</a>.';
 
-	var licenseccbyna = 'This work is made available under a Creative Commons Attribution-NonCommercial license. That means you are free to share, or remix the work noncommercially, as long as they credit the copyright owner, (' + contribName + '). For more information about Creative Commons licenses, please visit <a href="http://creativecommons.org/">the Creative Commons website</a>.';
+	var licenseccbyna = 'This work is made available under a Creative Commons Attribution-NonCommercial license. That means you are free to share, or remix the work noncommercially, as long as they credit the copyright owner, (' + contribName + '). For more information about Creative Commons licenses, please visit \<a href=\"http://creativecommons.org/\"\>the Creative Commons website\<\/a>.';
 
 	var dateTime = jQuery('meta[name=date]').attr("content");
 	var licenseType = jQuery('input[name=license]:checked', 'body.contribution #primary form').val();
