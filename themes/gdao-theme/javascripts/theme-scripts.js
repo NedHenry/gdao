@@ -390,7 +390,6 @@ var titleError = jQuery('<div class="error" id="title-error">You must include a 
 	var dateTime = jQuery('meta[name=date]').attr("content");
 	var licenseType = jQuery('input[name=license]:checked', 'body.contribution #primary form').val();
 	var copyrightType = jQuery('input[name=copyright]:checked', 'body.contribution #primary form').val();
-	jQuery('textarea#Elements-47-0-text').val(fairUse);
 	jQuery('#Elements-420-0-text').val('no'); 
 	jQuery('#element-100 textarea').val(dateTime);
     if(!jQuery('input#contributor-name').val()) {
@@ -399,10 +398,6 @@ var titleError = jQuery('<div class="error" id="title-error">You must include a 
 	if(!jQuery('input#contributor-name').val()) {
       jQuery('#Elements-420-0-text').val('no'); 
     }
-
-	/*if(copyrightType == 'fair-use'){
-      		jQuery('textarea#Elements-47-0-text').val(fairUse);
-	}*/
 	
 	if(licenseType == 'regents'){
       		jQuery('textarea#Elements-47-0-text').val(submitterRegents);
@@ -416,6 +411,10 @@ var titleError = jQuery('<div class="error" id="title-error">You must include a 
 	if(licenseType == 'Creative Commons Attribution Non-Commercial'){
       		jQuery('textarea#Elements-47-0-text').val(submittercc);
 		 jQuery('textarea#Elements-135-0-text').val(licenseccbyna);
+	}
+	
+	if(copyrightType == 'fair-use'){
+      		jQuery('textarea#Elements-47-0-text').val(fairUse);
 	}
 
 	if (jQuery('#element-50 textarea').val().length == 0) {
