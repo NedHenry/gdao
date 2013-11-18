@@ -144,6 +144,7 @@ function gdao_display_field($fieldName, $fieldLabel, $uri) {
 
 // + - & || ! ( ) { } [ ] ^ " ~ * ? : \
 function gdao_solr_escape($query) {
+    $query = str_replace('&quot;', '"', $query);
     $query = str_replace(':', '\%3A', $query);
     $query = str_replace('+', '\%2B', $query);
     $query = str_replace('-', '\-', $query);
