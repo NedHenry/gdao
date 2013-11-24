@@ -20,19 +20,12 @@
   <?php if (empty($height)): ?>
   <script type="text/javascript">
     function init() {
+      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
       OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
-      var viewer;
-      var ts;
 
-      <?php if ($isIE): ?>
-        OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo GDAO_WEB_SERVER; ?>';
-        ts = new OpenSeadragon.DjTileSource('<?php echo GDAO_WEB_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-      <?php else: ?>
-        OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
-        ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-      <?php endif; ?>
+      var ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
+      var viewer = new OpenSeadragon.Viewer("zoom_image");
 
-      viewer = new OpenSeadragon.Viewer("zoom_image");
       viewer.openTileSource(ts);
     }
 
