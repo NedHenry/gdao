@@ -24,7 +24,7 @@
       var viewer;
       var ts;
 
-      if ($isEI) {
+      if ($isIE) {
         OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo GDAO_WEB_SERVER; ?>';
         ts = new OpenSeadragon.DjTileSource('<?php echo GDAO_WEB_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
       }
