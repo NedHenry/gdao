@@ -24,7 +24,7 @@ $.DjTileSource = function(djatoka, imageID) {
     this.baseURL = djatoka + "zoom/";
     this.imageID = imageID;
 
-    if (XDomainRequest) { /** Use IE **/
+    if (typeof XDomainRequest != 'undefined') { /** Use IE **/
       http = new XDomainRequest();
     }
     else { /** Use a real browser **/
