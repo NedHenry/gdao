@@ -17,20 +17,23 @@
     <div id="zoom_return"><a href="/items/show/<?php echo $id; ?>">Return to item page</a></div>
   <?php endif; ?>
 
-  <?php if ($isIE): ?>
-    <div id="ie_message">We're sorry, but the image zoom does not yet work in Internet Explorer (IE).
-    We are working to add support for IE but, in the meantime, please use another browser to access
-    this feature.</div>
-  <?php else: ?>
   <?php if (empty($height)): ?>
   <script type="text/javascript">
     function init() {
-      OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
       OpenSeadragon.DEFAULT_SETTINGS.autoHideControls = false;
+      var viewer;
+      var ts;
 
-      var ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-      var viewer = new OpenSeadragon.Viewer("zoom_image");
+      if ($isEI) {
+        OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo GDAO_WEB_SERVER; ?>';
+        ts = new OpenSeadragon.DjTileSource('<?php echo GDAO_WEB_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
+      }
+      else {
+        OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
+        ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
+      }
 
+      viewer = new OpenSeadragon.Viewer("zoom_image");
       viewer.openTileSource(ts);
     }
 
@@ -44,7 +47,6 @@
     <img src="<?php echo JP2_IMAGE_SERVER; ?>/view/fullSize/<?php echo urlencode($ark); ?>"
     alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php
     echo $width; ?>" height="<?php echo $height; ?>"/>
-  <?php endif; ?></div>
 
   <?php if (!empty($count) && $count > 1) {
     $index = strpos($ark, '/is/');
