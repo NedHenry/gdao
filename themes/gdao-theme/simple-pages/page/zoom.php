@@ -24,14 +24,13 @@
       var viewer;
       var ts;
 
-      if ($isIE) {
+  <?php if ($isIE): ?>
         OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo GDAO_WEB_SERVER; ?>';
         ts = new OpenSeadragon.DjTileSource('<?php echo GDAO_WEB_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-      }
-      else {
+  <?php else: ?>
         OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
         ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-      }
+  <?php endif; ?>
 
       viewer = new OpenSeadragon.Viewer("zoom_image");
       viewer.openTileSource(ts);
