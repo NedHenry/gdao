@@ -46,7 +46,7 @@
     <img src="<?php echo JP2_IMAGE_SERVER; ?>/view/fullSize/<?php echo urlencode($ark); ?>"
     alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php
     echo $width; ?>" height="<?php echo $height; ?>"/>
-  </div>
+  <?php endif; ?></div>
 
   <?php if (!empty($count) && $count > 1) {
     $index = strpos($ark, '/is/');
@@ -69,4 +69,3 @@
     }
   } ?>
 
-  <?php endif; ?>
