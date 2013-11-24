@@ -27,7 +27,18 @@ $.DjTileSource = function(djatoka, imageID) {
     http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
     http.send();
 
-    xml = http.responseXML;	
+    text = http.responseText;
+
+    if (window.DOMParser) {
+      parser=new DOMParser();
+      xml=parser.parseFromString(text,"text/xml");
+    }
+    else {
+      xml=new ActiveXObject("Microsoft.XMLDOM");
+      xml.async=false;
+      xml.loadXML(text);
+    }
+
     wNode = xml.getElementsByTagNameNS(iiifNS, 'width').item(0).childNodes[0];
     hNode = xml.getElementsByTagNameNS(iiifNS, 'height').item(0).childNodes[0];
     width = parseInt(wNode.nodeValue);
