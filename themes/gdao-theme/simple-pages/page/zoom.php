@@ -24,13 +24,13 @@
       var viewer;
       var ts;
 
-  <?php if ($isIE): ?>
+      <?php if ($isIE): ?>
         OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo GDAO_WEB_SERVER; ?>';
         ts = new OpenSeadragon.DjTileSource('<?php echo GDAO_WEB_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-  <?php else: ?>
+      <?php else: ?>
         OpenSeadragon.DEFAULT_SETTINGS.prefixUrl = '<?php echo JP2_IMAGE_SERVER; ?>';
         ts = new OpenSeadragon.DjTileSource('<?php echo JP2_IMAGE_SERVER; ?>/view/', encodeURIComponent('<?php echo $ark; ?>'));
-  <?php endif; ?>
+      <?php endif; ?>
 
       viewer = new OpenSeadragon.Viewer("zoom_image");
       viewer.openTileSource(ts);
@@ -46,6 +46,7 @@
     <img src="<?php echo JP2_IMAGE_SERVER; ?>/view/fullSize/<?php echo urlencode($ark); ?>"
     alt="<?php echo empty($title) ? 'Zoom Image Navigator' : $title; ?>" width="<?php
     echo $width; ?>" height="<?php echo $height; ?>"/>
+  </div>
 
   <?php if (!empty($count) && $count > 1) {
     $index = strpos($ark, '/is/');
