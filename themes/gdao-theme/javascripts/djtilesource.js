@@ -24,22 +24,21 @@ $.DjTileSource = function(djatoka, imageID) {
     this.baseURL = djatoka + "zoom/";
     this.imageID = imageID;
 
-    if (typeof XDomainRequest != 'undefined') { /** Use IE **/
+    if (typeof XDomainRequest != 'undefined' && !window.atob) { /** IE < 10 **/
       http = new XDomainRequest();
       http.open('GET', djatoka + "image/" + imageID + "/info.xml");
-      http.send();
-      text = http.responseText;
-
-      /** XDomainRequest can't be synchronous; the below is a temporary hack **/
-      if (text == '') {
-        alert('Older versions of Internet Explorer are only partially supported.\nPlease consider updating your browser.');
-        http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
-        http.send();
-        text = http.responseText;
-      }
     }
-    else { /** Use a real browser **/
+    else { /** We're using a real browser **/
       http = new XMLHttpRequest();
+      http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
+    }
+
+    http.send();
+    text = http.responseText;
+
+    /** XDomainRequest can't be synchronous; the below is a temporary hack **/
+    if (text == '') {
+      alert('Older versions of Internet Explorer are only partially supported.\nPlease consider upgrading your browser.');
       http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
       http.send();
       text = http.responseText;
@@ -47,8 +46,10 @@ $.DjTileSource = function(djatoka, imageID) {
 
     parser=new DOMParser();
     xml=parser.parseFromString(text,"text/xml");
-    wNode = xml.getElementsByTagNameNS(iiifNS, 'width').item(0).childNodes[0];
-    hNode = xml.getElementsByTagNameNS(iiifNS, 'height').item(0).childNodes[0];
+    wItems = xml.getElementsByTagName('width')[0];
+    wNode = wItems.childNodes[0];
+    hItems = xml.getElementsByTagName('height')[0];
+    hNode = hItems.childNodes[0];
     width = parseInt(wNode.nodeValue);
     height = parseInt(hNode.nodeValue);
     
