@@ -27,18 +27,19 @@ $.DjTileSource = function(djatoka, imageID) {
     if (typeof XDomainRequest != 'undefined') { /** Use IE **/
       http = new XDomainRequest();
       http.open('GET', djatoka + "image/" + imageID + "/info.xml");
+      http.send();
+      text = http.responseText;
+
+      /** XDomainRequest can't be synchronous; the below is a temporary hack **/
+      if (text == '') {
+        alert('Older versions of Internet Explorer are only partially supported.\nPlease consider updating your browser.');
+        http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
+        http.send();
+        text = http.responseText;
+      }
     }
     else { /** Use a real browser **/
       http = new XMLHttpRequest();
-      http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
-    }
-
-    http.send();
-    text = http.responseText;
-
-    /** XDomainRequest can't be synchronous; the below is a temporary hack **/
-    if (text == '') {
-      alert('Older versions of Internet Explorer are only partially supported.\nPlease consider updating your browser.');
       http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
       http.send();
       text = http.responseText;
