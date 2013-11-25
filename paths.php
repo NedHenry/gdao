@@ -7,8 +7,8 @@
  * @package Omeka
  */
 
-define('JP2_IMAGE_SERVER', 'http://images03.gdao.org');
-define('GDAO_WEB_SERVER', 'http://www03.gdao.org');
+define('JP2_IMAGE_SERVER', 'http://images.gdao.org');
+define('GDAO_WEB_SERVER', 'http://www.gdao.org');
 
 /**
  * Define the current version of Omeka.

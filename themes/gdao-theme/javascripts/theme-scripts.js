@@ -235,8 +235,8 @@ jQuery(document).ready(function() {
 	imgArk = arkArray[0];
 	imgNumber = arkArray[1];
 	itemNumber = arkArray[2];
-	imgSrc = 'http://images03.gdao.org/view/image/ark%3A%2F38305%2F' + imgArk + '%2Fis%2F' + imgNumber;
-	imgLink = '<div class="exhibit-image"><a href="http://www03.gdao.org/items/show/' + itemNumber + '"><img src="' + imgSrc + '"></a></div>';
+	imgSrc = 'http://images.gdao.org/view/image/ark%3A%2F38305%2F' + imgArk + '%2Fis%2F' + imgNumber;
+	imgLink = '<div class="exhibit-image"><a href="http://www.gdao.org/items/show/' + itemNumber + '"><img src="' + imgSrc + '"></a></div>';
 	jQuery(imgLink).insertAfter('div#primary h2');
 	jQuery('body.summary #primary address').addClass('hidden');
   }
@@ -248,7 +248,7 @@ jQuery(document).ready(function() {
 	  imgArk = arkArray[0];
 	  imgNumber = arkArray[1];
 	  exhibitLink = jQuery(this).find('h2 a').attr('href');
-	  imgSrc = 'http://images03.gdao.org/view/thumbnail/ark%3A%2F38305%2F' + imgArk + '%2Fis%2F' + imgNumber;
+	  imgSrc = 'http://images.gdao.org/view/thumbnail/ark%3A%2F38305%2F' + imgArk + '%2Fis%2F' + imgNumber;
 	  imgLink = '<div class="exhibit-image"><a href="' + exhibitLink + '"><img src="' + imgSrc + '"></a></div>';
 	  jQuery(imgLink).prependTo(jQuery(this));
 	  jQuery('body.browse div#exhibits address').addClass('hidden');
