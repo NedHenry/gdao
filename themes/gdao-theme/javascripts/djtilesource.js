@@ -26,26 +26,26 @@ $.DjTileSource = function(djatoka, imageID) {
 
     if (typeof XDomainRequest != 'undefined') { /** Use IE **/
       http = new XDomainRequest();
+      http.open('GET', djatoka + "image/" + imageID + "/info.xml");
     }
     else { /** Use a real browser **/
       http = new XMLHttpRequest();
+      http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
     }
 
-    http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
     http.send();
-
     text = http.responseText;
 
-    if (window.DOMParser) {
-      parser=new DOMParser();
-      xml=parser.parseFromString(text,"text/xml");
-    }
-    else {
-      xml=new ActiveXObject("Microsoft.XMLDOM");
-      xml.async=false;
-      xml.loadXML(text);
+    /** XDomainRequest can't be synchronous; the below is a temporary hack **/
+    if (text == '') {
+      alert('Older versions of Internet Explorer are only partially supported.\nPlease consider updating your browser.');
+      http.open('GET', djatoka + "image/" + imageID + "/info.xml", false);
+      http.send();
+      text = http.responseText;
     }
 
+    parser=new DOMParser();
+    xml=parser.parseFromString(text,"text/xml");
     wNode = xml.getElementsByTagNameNS(iiifNS, 'width').item(0).childNodes[0];
     hNode = xml.getElementsByTagNameNS(iiifNS, 'height').item(0).childNodes[0];
     width = parseInt(wNode.nodeValue);
